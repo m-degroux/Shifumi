@@ -2,13 +2,17 @@ console.log("Shifumi");
 element = document.getElementById("text");
 element.textContent = "Shifumi";
 
-let choix = ["Pierre","Ciseaux","Feuille"];
+let choix = ["Pierre", "Ciseaux", "Feuille"];
+
+let victoires = 0;
+let defaites = 0;
+let egalites = 0;
 
 
 document.getElementById("pierre").addEventListener("click", () => jouer("Pierre"));
 document.getElementById("feuille").addEventListener("click", () => jouer("Feuille"));
 document.getElementById("ciseaux").addEventListener("click", () => jouer("Ciseaux"));
-
+document.getElementById("recommence").addEventListener("click", () => recommecer());
 
 function jouer(choixUtilisateur) {
     let choixOrdi = joueOrdi();
@@ -24,25 +28,39 @@ function jouer(choixUtilisateur) {
     } else {
         defaite(choixUtilisateur, choixOrdi);
     }
-        choixOrdi = joueOrdi();
+    choixOrdi = joueOrdi();
 }
 
-function joueOrdi(){
+function joueOrdi() {
     let random = Math.floor(Math.random() * choix.length);
     return choix[random];
 }
 
-function victoire (utilisateur, ordi){
-      document.getElementById("resultat").textContent = 'Victoire ! Tu as choisi : ' +utilisateur +' , l’ordi a choisi :'+ ordi;
+function victoire(utilisateur, ordi) {
+    document.getElementById("resultat").textContent = 'Victoire ! Tu as choisi : ' + utilisateur + ' , l’ordi a choisi :' + ordi;
+    victoires++;
+    updateScore();
 }
-function defaite(utilisateur, ordi){
-    document.getElementById("resultat").textContent = 'Défaite ! Tu as choisi : ' +utilisateur +' , l’ordi a choisi :'+ ordi;
-
+function defaite(utilisateur, ordi) {
+    document.getElementById("resultat").textContent = 'Défaite ! Tu as choisi : ' + utilisateur + ' , l’ordi a choisi :' + ordi;
+    defaites++;
+    updateScore();
 }
-function egaliter(utilisateur, ordi){
-    document.getElementById("resultat").textContent = 'Egaliter ! Tu as choisi : ' +utilisateur +' , l’ordi a choisi :'+ ordi;    
+function egaliter(utilisateur, ordi) {
+    document.getElementById("resultat").textContent = 'Egaliter ! Tu as choisi : ' + utilisateur + ' , l’ordi a choisi :' + ordi;
+    egalites++;
+    updateScore();
 }
+function updateScore() {
+      document.getElementById("victoires").textContent = victoires;
+      document.getElementById("defaites").textContent = defaites;
+      document.getElementById("egalites").textContent = egalites;    
+    }
 
-
-
+function recommecer() {
+    victoires = 0;
+    defaites = 0;
+    egalites = 0;
+    updateScore();
+}
 
