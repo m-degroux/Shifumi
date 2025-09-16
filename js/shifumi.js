@@ -1,6 +1,4 @@
 console.log("Shifumi");
-element = document.getElementById("text");
-element.textContent = "Shifumi";
 
 let choix = ["Pierre", "Ciseaux", "Feuille"];
 
