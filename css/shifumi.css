@@ -59,15 +59,15 @@ button:hover {
 }
 
 .pierre {
-    background-image: url(/image/pierre.png);
+    background-image: url(image/pierre.png);
 }
 
 .ciseaux {
-    background-image: url(/image/ciseaux.png);
+    background-image: url(image/ciseaux.png);
 }
 
 .feuille {
-    background-image: url(/image/feuille.png);
+    background-image: url(image/feuille.png);
 }
 
 div{
