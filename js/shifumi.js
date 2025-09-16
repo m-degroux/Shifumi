@@ -35,17 +35,17 @@ function joueOrdi() {
 }
 
 function victoire(utilisateur, ordi) {
-    document.getElementById("resultat").textContent = 'Victoire ! Tu as choisi : ' + utilisateur + ' , l’ordi a choisi :' + ordi;
+    document.getElementById("resultat").textContent = 'Victoire ! Tu as choisi : ' + utilisateur + ' , bot a choisi : ' + ordi;
     victoires++;
     updateScore();
 }
 function defaite(utilisateur, ordi) {
-    document.getElementById("resultat").textContent = 'Défaite ! Tu as choisi : ' + utilisateur + ' , l’ordi a choisi :' + ordi;
+    document.getElementById("resultat").textContent = 'Défaite ! Tu as choisi : ' + utilisateur + ' , bot a choisi : ' + ordi;
     defaites++;
     updateScore();
 }
 function egaliter(utilisateur, ordi) {
-    document.getElementById("resultat").textContent = 'Egaliter ! Tu as choisi : ' + utilisateur + ' , l’ordi a choisi :' + ordi;
+    document.getElementById("resultat").textContent = 'Egaliter ! Tu as choisi : ' + utilisateur + ' , bot a choisi : ' + ordi;
     egalites++;
     updateScore();
 }
@@ -55,10 +55,24 @@ function updateScore() {
       document.getElementById("egalites").textContent = egalites;    
     }
 
+
 function recommecer() {
-    victoires = 0;
-    defaites = 0;
-    egalites = 0;
-    updateScore();
+    let scores = document.querySelectorAll(".score");
+
+        scores.forEach(s => {
+        s.classList.remove("scale-in");
+        s.classList.add("scale-out");
+    });
+   setTimeout(() => {
+        victoires = 0;
+        defaites = 0;
+        egalites = 0;
+        updateScore();
+
+        scores.forEach(s => {
+            s.classList.remove("scale-out");
+            s.classList.add("scale-in");
+        });
+    }, 400);
 }
 
